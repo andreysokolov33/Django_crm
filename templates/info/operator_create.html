@@ -1,28 +1,16 @@
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-  <meta charset = "UTF-8">
-  <title>Title</title>
-</head>
+{% extends 'base.html' %}
 
-<style>
-	.operator{
-		padding: 10px 5px;
-		margin-top: 10px;
-		background-color: antiquewhite;
-	}
-</style>
+{% block title %}
+	Оператор {{ operator.fullname }}
+{% endblock %}
 
-<body>
+{% block main_part %}
 	<a href = "/operators">Back</a>
 	<hr>
 	<h1>Создать оператора</h1><br>
-	<form method="post">
+	<form method = "post">
 		{% csrf_token %}
 		{{ form.as_p }}
-		<button type="submit">Создать</button>
+		<button type = "submit">Создать</button>
 	</form>
-
-
-</body>
-</html>
+{% endblock %}

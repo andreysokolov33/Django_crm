@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-  <meta charset = "UTF-8">
-  <title>Title</title>
-</head>
+{% extends 'base.html' %}
 
-<style>
-	.operator{
-		padding: 10px 5px;
-		margin-top: 10px;
-		background-color: antiquewhite;
-	}
-</style>
+{% block title %}
+	Оператор {{ operator.fullname }}
+{% endblock %}
 
-<body>
-	<a href = "/operators">Back</a>
+{% block main_part %}
+	<a href = "{% url 'main_part:operators_list' %}">Назад</a>
 	<hr>
 	<h1>Оператор {{ operator.fullname }}</h1><br>
 	<p>{{ operator.login }}</p>
-	<a href = "/info/{{ operator.pk }}/update">Обновить информация</a><br>
-	<a href = "/info/{{ operator.pk }}/delete">Удалить оператора</a>
+	<hr>
+	<a href = "{% url 'main_part:operators_update' operator.pk %}">Обновить информацию</a>
+	<a href = "{% url 'main_part:operators_delete' operator.pk %}">Удалить оператора</a>
+{% endblock %}
 
-</body>
-</html>

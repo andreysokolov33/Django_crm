@@ -5,7 +5,6 @@ from django.contrib.auth.models import AbstractUser
 
 # Создали пользователя по классу AbstractUser
 class User(AbstractUser):
-
     pass
 
 
@@ -14,10 +13,8 @@ class Admins(models.Model):
     login = models.CharField(max_length=45)
     password = models.CharField(max_length=200)
 
-
     def __str__(self):
         return self.user.username
-
 
     class Meta:
         verbose_name = 'Админ'

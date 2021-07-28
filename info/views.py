@@ -6,6 +6,10 @@ from .forms import OperatorForm, OperatorModelForm
 
 # Create your views here.
 
+def landing_page(request):
+    return render(request, 'landing.html')
+
+
 def antennas_list(request):
     antennas = Antenna.objects.all()
     context = {
