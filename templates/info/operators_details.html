@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+	.operator{
+		padding: 10px 5px;
+		margin-top: 10px;
+		background-color: antiquewhite;
+	}
+</style>
+
+<body>
+	<a href = "/operators">Back</a>
+	<hr>
+	<h1>Оператор {{ operator.fullname }}</h1><br>
+	<p>{{ operator.login }}</p>
+	<a href = "/info/{{ operator.pk }}/update">Обновить информация</a><br>
+	<a href = "/info/{{ operator.pk }}/delete">Удалить оператора</a>
+
+</body>
+</html>

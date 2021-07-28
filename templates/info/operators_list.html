@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+	.operator{
+		padding: 10px 5px;
+		margin-top: 10px;
+		background-color: antiquewhite;
+	}
+</style>
+
+<body>
+	<a href = "/operators/create">Добавить нового оператора</a>
+	<hr>
+	<h1>Операторы</h1>
+	{% for operator in operators %}
+		<div class="operator">
+			<a href="/operators/{{ operator.pk }}">{{ operator.fullname }}</a>
+		</div>
+	{% endfor %}
+</body>
+</html>
