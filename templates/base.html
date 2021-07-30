@@ -1,20 +1,22 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>
-        {% block title %}
-        {% endblock %}
+        {% block title %} {% endblock %}
     </title>
+    <link rel="stylesheet" href="/static/css/styles.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-<div class="max-w-12xl ">
-    {% include 'navbar.html' %}
-    {% block main_part %}
 
-    {% endblock %}
-</div>
-{% include 'scripts.html' %}
+<body>
+    <div class="max-w-12xl ">
+        {% include 'navbar.html' %} {% block main_part %} {% endblock %}
+    </div>
+    {% include 'scripts.html' %}
 </body>
+
 </html>

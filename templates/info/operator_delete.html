@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Подтверждение удаления {{ operator.fullname }}
+{% endblock %}
+
+{% block main_part %}
+<section class="text-gray-600 body-font overflow-hidden">
+	<div class="container px-5 py-24 mx-auto">
+		<div class="lg:w-4/5 mx-auto flex flex-wrap">
+			<div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+				<h2 class="text-sm title-font text-gray-500 tracking-widest">Оператор</h2>
+				<h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ operator.fullname }}</h1>
+				<h2 class="text-gray-900 text-3xl title-font font-medium mb-4">Подтвердите удаление</h2>
+				<form method="post">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<div class="flex">
+						<button type="submit"
+							class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Да,
+							удалить</button>
+				</form>
+				<button
+					class="flex ml-auto text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">
+					<a href="../">Нет, вернуться</a>
+				</button>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
