@@ -11,12 +11,13 @@ class OperatorModelForm(forms.ModelForm):
             'password',
             'nds',
             'proc',
+				'sogl_date'
         )
 
 
-class OperatorForm(forms.Form):
-    fullname = forms.CharField()
-    login = forms.CharField()
-    password = forms.CharField()
-    nds = forms.IntegerField()
-    proc = forms.IntegerField()
+# class OperatorForm(forms.Form):
+#     fullname = forms.CharField()
+#     login = forms.CharField()
+#     password = forms.CharField()
+#     nds = forms.IntegerField()
+#     proc = forms.IntegerField()

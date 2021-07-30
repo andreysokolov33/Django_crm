@@ -1,10 +1,20 @@
 from django.shortcuts import render, redirect
 from .models import *
+from django.views.generic import TemplateView, ListView
 from django.http import HttpResponse
-from .forms import OperatorForm, OperatorModelForm
+from .forms import OperatorModelForm
 
 
 # Create your views here.
+
+class LandingPageCiew(TemplateView):
+	template_name = TemplateView()
+
+
+
+
+
+
 
 def landing_page(request):
     return render(request, 'landing.html')
@@ -16,6 +26,11 @@ def antennas_list(request):
         'antennas': antennas,
     }
     return render(request, 'info/antennas_list.html', context=context)
+
+
+class OperatorsListView(ListView):
+	template_name = "info/operators_list.html"
+	queryset = Operator.objects.all()
 
 
 # Операторы
@@ -44,7 +59,7 @@ def operator_create(request):
             # Если в файле forms.py указана ссылка на модель Operator, то можно просто form.save() без других указаний багодаря OperatorModelForm
             form.save()
             print('Создан новый оператор')
-            return redirect('/operators')
+            return redirect('/main_info/operators')
     context = {
         'form': form,
     }
@@ -62,7 +77,7 @@ def operator_update(request, pk):
             # Если в файле forms.py указана ссылка на модель Operator, то можно просто form.save() без других указаний
             form.save()
             print('Создан новый оператор')
-            return redirect('/operators')
+            return redirect('../')
     context = {
         'form': form,
         'operator': operator,
@@ -74,7 +89,7 @@ def operator_update(request, pk):
 def operator_delete(request, pk):
     operator = Operator.objects.get(id=pk)
     operator.delete()
-    return redirect('/operators')
+    return redirect('/main_info/operators')
 # def operator_create(request):
 #     form = OperatorModelForm()
 #     if request.method == 'POST':

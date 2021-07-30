@@ -5,7 +5,7 @@ app_name = 'info'
 
 urlpatterns = [
     path('antennas/', antennas_list, name='antennas_list'),
-    path('operators/', operators, name='operators_list'),
+    path('operators/', OperatorsListView.as_view(), name='operators_list'),
     path('operators/create/', operator_create, name='operators_create'),
     path('operators/<int:pk>/', operator_details, name='operators_unique'),
     path('operators/<int:pk>/update/', operator_update, name='operators_update'),
