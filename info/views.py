@@ -2,18 +2,25 @@ from django.shortcuts import render, redirect, reverse
 from .models import *
 from django.views.generic import TemplateView, ListView, DeleteView, CreateView, UpdateView, DetailView
 from django.http import HttpResponse
-from .forms import OperatorModelForm
-
+from .forms import OperatorModelForm, CustomUserCreationForm
+from django.views import generic
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
-class LandingPageView(TemplateView):
-	template_name = TemplateView()
+class SignupView(generic.CreateView):
+	template_name = 'registration/signup.html'
+	form_class = CustomUserCreationForm
+
+	def get_success_url(self):
+			# return redirect('/main_info/operators')
+			return reverse("login")
 
 
 
 
-
+class LandingPageView(generic.TemplateView):
+	template_name = 'landing.html'
 
 
 def landing_page(request):
@@ -28,7 +35,7 @@ def antennas_list(request):
     return render(request, 'info/antennas_list.html', context=context)
 
 
-class OperatorsListView(ListView):
+class OperatorsListView(generic.ListView):
 	template_name = "info/operators_list.html"
 	queryset = Operator.objects.all()
 	context_object_name = 'operators'
@@ -42,7 +49,7 @@ class OperatorsListView(ListView):
 #     }
 #     return render(request, 'info/operators_list.html', context=context)
 
-class OperatorsDetailView(DetailView):
+class OperatorsDetailView(generic.DetailView):
 	template_name = "info/operators_details.html"
 	queryset = Operator.objects.all()
 	context_object_name = 'operator'
@@ -55,7 +62,7 @@ class OperatorsDetailView(DetailView):
 #     }
 #     return render(request, 'info/operators_details.html', context=context)
 
-class OperatorsCreateView(CreateView):
+class OperatorsCreateView(generic.CreateView):
 	template_name = "info/operator_create.html"
 	form_class = OperatorModelForm
 
@@ -81,7 +88,7 @@ class OperatorsCreateView(CreateView):
 #     return render(request, 'info/operator_create.html', context=context)
 
 
-class OperatorsUpdateView(UpdateView):
+class OperatorsUpdateView(generic.UpdateView):
 	template_name = "info/operators_update.html"
 	queryset = Operator.objects.all()
 	form_class = OperatorModelForm
@@ -110,7 +117,7 @@ class OperatorsUpdateView(UpdateView):
 
 #     return render(request, 'info/operators_update.html', context=context)
 
-class OperatorsDeleteView(DeleteView):
+class OperatorsDeleteView(generic.DeleteView):
 	template_name = "info/operator_delete.html"
 	queryset = Operator.objects.all()
 

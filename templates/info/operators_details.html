@@ -4,7 +4,7 @@
 Оператор {{ operator.fullname }}
 {% endblock %}
 
-{% block main_part %}
+{% block main %}
 
 <section class="text-gray-600 body-font overflow-hidden">
 	<div class="container px-5 py-24 mx-auto">
@@ -32,11 +32,11 @@
 
 					<button
 						class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
-						<a href="{% url 'main_part:operators_update' operator.pk %}">Обновить информацию</a>
+						<a href="{% url 'main:operators_update' operator.pk %}">Обновить информацию</a>
 					</button>
 					<button
 						class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-						<a href="{% url 'main_part:operators_delete' operator.pk %}">Удалить</a>
+						<a href="{% url 'main:operators_delete' operator.pk %}">Удалить</a>
 					</button>
 					<button
 						class="flex ml-auto text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">
@@ -49,11 +49,11 @@
 </section>
 
 
-<a href="{% url 'main_part:operators_list' %}">Назад</a>
+<a href="{% url 'main:operators_list' %}">Назад</a>
 <hr>
 <h1>Оператор {{ operator.fullname }}</h1><br>
 <p>{{ operator.login }}</p>
 <hr>
-<a href="{% url 'main_part:operators_update' operator.pk %}">Обновить информацию</a>
-<a href="{% url 'main_part:operators_delete' operator.pk %}">Удалить оператора</a>
+<a href="{% url 'main:operators_update' operator.pk %}">Обновить информацию</a>
+<a href="{% url 'main:operators_delete' operator.pk %}">Удалить оператора</a>
 {% endblock %}
