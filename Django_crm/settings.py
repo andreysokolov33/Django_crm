@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'Django_crm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -134,4 +134,5 @@ STATIC_ROOT = "static_root"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'info.User'
-LOGIN_REDIRECT_URL = '/main_info/operators'
+LOGIN_REDIRECT_URL = '/operators'
+LOGIN_URL = '/login'

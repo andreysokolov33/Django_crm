@@ -6,8 +6,10 @@ from .forms import OperatorModelForm, CustomUserCreationForm
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm
 
-# Create your views here.
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+# Create your views here.
+#! Создание квхода/выхода
 class SignupView(generic.CreateView):
 	template_name = 'registration/signup.html'
 	form_class = CustomUserCreationForm
@@ -18,7 +20,7 @@ class SignupView(generic.CreateView):
 
 
 
-
+#! Создание главной страницы
 class LandingPageView(generic.TemplateView):
 	template_name = 'landing.html'
 
@@ -34,9 +36,9 @@ def antennas_list(request):
     }
     return render(request, 'info/antennas_list.html', context=context)
 
-
-class OperatorsListView(generic.ListView):
-	template_name = "info/operators_list.html"
+#! Создание всего по ОПЕРАТОРАМ
+class OperatorsListView(LoginRequiredMixin, generic.ListView):
+	template_name = "info/operators/operators_list.html"
 	queryset = Operator.objects.all()
 	context_object_name = 'operators'
 
@@ -49,8 +51,8 @@ class OperatorsListView(generic.ListView):
 #     }
 #     return render(request, 'info/operators_list.html', context=context)
 
-class OperatorsDetailView(generic.DetailView):
-	template_name = "info/operators_details.html"
+class OperatorsDetailView(LoginRequiredMixin, generic.DetailView):
+	template_name = "info/operators/operators_details.html"
 	queryset = Operator.objects.all()
 	context_object_name = 'operator'
 
@@ -62,8 +64,8 @@ class OperatorsDetailView(generic.DetailView):
 #     }
 #     return render(request, 'info/operators_details.html', context=context)
 
-class OperatorsCreateView(generic.CreateView):
-	template_name = "info/operator_create.html"
+class OperatorsCreateView(LoginRequiredMixin, generic.CreateView):
+	template_name = "info/operators/operator_create.html"
 	form_class = OperatorModelForm
 
 	def get_success_url(self):
@@ -88,8 +90,8 @@ class OperatorsCreateView(generic.CreateView):
 #     return render(request, 'info/operator_create.html', context=context)
 
 
-class OperatorsUpdateView(generic.UpdateView):
-	template_name = "info/operators_update.html"
+class OperatorsUpdateView(LoginRequiredMixin, generic.UpdateView):
+	template_name = "info/operators/operators_update.html"
 	queryset = Operator.objects.all()
 	form_class = OperatorModelForm
 
@@ -117,8 +119,8 @@ class OperatorsUpdateView(generic.UpdateView):
 
 #     return render(request, 'info/operators_update.html', context=context)
 
-class OperatorsDeleteView(generic.DeleteView):
-	template_name = "info/operator_delete.html"
+class OperatorsDeleteView(LoginRequiredMixin, generic.DeleteView):
+	template_name = "info/operators/operator_delete.html"
 	queryset = Operator.objects.all()
 
 
@@ -156,3 +158,14 @@ class OperatorsDeleteView(generic.DeleteView):
 #         'form': form,
 #     }
 #     return render(request, 'info/operator_create.html', context=context)
+
+
+#! Создание классов для всех партнеров
+
+class PartnersView(LoginRequiredMixin, generic.ListView):
+	template_name = "info/partners/partners_list.html"
+	queryset = Operator.objects.all()
+	context_object_name = 'partners'
+
+	def get_queryset(self):
+		return Partner.objects.all()

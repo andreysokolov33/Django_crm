@@ -1,0 +1,17 @@
+{
+	"sqltools.connections": [
+		{
+			"mysqlOptions": {
+				"authProtocol": "default"
+			},
+			"previewLimit": 50,
+			"server": "89.108.116.180",
+			"port": 3306,
+			"driver": "MySQL",
+			"name": "Laravel",
+			"username": "laravel",
+			"password": "1qaZse432w",
+			"database": "wifitochka"
+		}
+	]
+}
